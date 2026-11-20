@@ -146,6 +146,8 @@ class MainActivity : ComponentActivity(), NfcAdapter.ReaderCallback {
             runOnUiThread { scanResult = r }
             return
         }
+        val result = readCheckpoint(tag)
+        runOnUiThread { scanResult = handleRead(result) }
     }
 
     private fun handleRead(r: ReadResult): String {
